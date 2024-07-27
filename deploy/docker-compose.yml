@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: my-mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  web:
+    image: golang:1.22.5
+    container_name: go_envirment
+    working_dir: /app
+    environment:
+      GO111MODULE: on
+      GOPROXY: https://goproxy.cn
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../:/app
+    command: ["go", "run", "main.go"]
+#    networks:
+#      - apinet
+#    command: ["sh", "-c", "cd /app ; go run main.go"]
+#    command:
+#      - ["cd", "/app"]
+#    command: sh -c "cd "
+#    command:
+#      - [go,run,main]

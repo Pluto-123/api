@@ -1,0 +1,15 @@
+Server:
+  Port: :8080
+  DbAutoMigrate: false
+  DbLogMode: "error"
+Mysql:
+  Host: "mysql"
+  Port: "3306"
+  Config: "charset=utf8mb4&parseTime=True&loc=Local" # 其他配置, 例如时区
+  Dbname: "db"
+  Username: "root"
+  Password: "123456"
+JWT:
+  Secret: "abc123456"
+  Expire: 24 # hour
+  Issuer: "silkage"
